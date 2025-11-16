@@ -199,7 +199,7 @@ Official Anthropic app
 </td>
 <td width="33%">
 
-#### [Factory AI](/devoid-factory-ai/)
+#### [Factory AI](/droid-factory-ai/)
 ![Factory](https://img.shields.io/badge/Factory-AI-blue)
 
 Team collaboration
@@ -208,12 +208,12 @@ Team collaboration
 - ✅ GitHub integration
 - 💰 Subscription
 
-[**View Guide →**](/devoid-factory-ai/)
+[**View Guide →**](/droid-factory-ai/)
 
 </td>
 <td width="33%">
 
-#### [Void Editor](/devoid-factory-ai/)
+#### [Void Editor](/droid-factory-ai/)
 ![Void](https://img.shields.io/badge/Void-Editor-purple)
 
 Open-source editor
@@ -222,7 +222,7 @@ Open-source editor
 - ✅ Local models
 - 💰 FREE
 
-[**View Guide →**](/devoid-factory-ai/)
+[**View Guide →**](/droid-factory-ai/)
 
 </td>
 </tr>
@@ -266,14 +266,14 @@ Answer these questions:
 **Q: Where do you prefer to code?**
 - **Terminal**: [Claude Code](/claude-code/), [Gemini CLI](/gemini-cli/), [OpenCode](/opencode/)
 - **VS Code**: [Cline](/cline/), [Roo-Code](/roo-code/), [Claude Code Ext](/vscode-extensions/)
-- **Desktop App**: [Claude Desktop](/claude-desktop/), [Void](/devoid-factory-ai/)
+- **Desktop App**: [Claude Desktop](/claude-desktop/), [Void](/droid-factory-ai/)
 
 **Q: What's your priority?**
 - **Best AI Quality**: [Claude Code](/claude-code/)
 - **Biggest Context**: [Gemini CLI](/gemini-cli/) (1M tokens)
 - **Full Autonomy**: [Cline](/cline/)
 - **Cost Optimization**: [Roo-Code](/roo-code/)
-- **Free/Open Source**: [Gemini CLI](/gemini-cli/), [Void](/devoid-factory-ai/)
+- **Free/Open Source**: [Gemini CLI](/gemini-cli/), [Void](/droid-factory-ai/)
 
 ---
 
@@ -291,7 +291,7 @@ Answer these questions:
 | [**Roo-Code**](/roo-code/) | VS Code | API | Varies | ❌ | Cost optimization, modes |
 | [**Copilot**](/vscode-extensions/) | VS Code | $10/mo | N/A | ❌ | Autocomplete, beginners |
 | [**Claude Desktop**](/claude-desktop/) | Desktop | $20-60/mo | 200K | ✅ | MCP Desktop Extensions |
-| [**Void**](/devoid-factory-ai/) | Editor | FREE | Varies | ❌ | Open-source, local models |
+| [**Void**](/droid-factory-ai/) | Editor | FREE | Varies | ❌ | Open-source, local models |
 
 **[View Detailed Comparison →](/comparisons/feature-matrix.md)**
 
@@ -316,8 +316,8 @@ Answer these questions:
 ### Desktop Applications
 
 - **[Claude Desktop](/claude-desktop/)** - Desktop app with MCP
-- **[Factory AI](/devoid-factory-ai/)** - Team collaboration platform
-- **[Void Editor](/devoid-factory-ai/)** - Open-source AI editor
+- **[Factory AI](/droid-factory-ai/)** - Team collaboration platform
+- **[Void Editor](/droid-factory-ai/)** - Open-source AI editor
 
 ### Shared Resources
 

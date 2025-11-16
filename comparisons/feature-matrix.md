@@ -316,7 +316,7 @@ Last updated: 2025-11-12
 - [Cline →](/cline/)
 - [Roo-Code →](/roo-code/)
 - [VS Code Extensions →](/vscode-extensions/)
-- [Factory AI & Void →](/devoid-factory-ai/)
+- [Factory AI & Void →](/droid-factory-ai/)
 
 ### Configuration Resources
 - [MCP Servers Guide →](/shared/mcp-servers/)

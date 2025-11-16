@@ -1,4 +1,4 @@
-# Factory AI & Void - Complete Guide
+# Factory AI Droids & Void - Complete Guide
 
 <div align="center">
 
@@ -7,7 +7,7 @@
 
 *Factory AI Droids and Void Editor - Modern AI-powered development platforms*
 
-[Factory AI](https://factory.ai/) · [Void Editor](https://voideditor.com/)
+[Factory AI](https://factory.ai/) · [Droid Docs](https://docs.factory.ai/cli/getting-started/quickstart) · [Droid Code Review](https://github.com/Factory-AI/droid-code-review) · [Void Editor](https://voideditor.com/)
 
 </div>
 
@@ -17,18 +17,18 @@
 
 This guide covers two separate but related AI coding tools:
 
-1. **Factory AI** - AI coding platform with "Droids" (autonomous agents)
+1. **Factory AI Droids** - AI coding platform with autonomous "Droids" (AI agents)
 2. **Void** - Open-source AI code editor (Cursor alternative)
 
 ---
 
-## Factory AI
+## Factory AI Droids
 
 <div align="center">
 
 *AI-powered coding platform with autonomous "Droids"*
 
-[Website](https://factory.ai/) · [Factory IDE](https://factory.ai/product/ide)
+[Website](https://factory.ai/) · [Documentation](https://docs.factory.ai/cli/getting-started/quickstart) · [Droid Code Review](https://github.com/Factory-AI/droid-code-review)
 
 </div>
 
@@ -39,6 +39,7 @@ Factory AI is a comprehensive AI coding platform that features autonomous AI age
 - IDE extensions (VS Code, JetBrains)
 - Terminal/CLI
 - Factory Bridge (local repository access)
+- Droid Code Review (GitHub integration)
 
 ### Key Features
 
@@ -51,11 +52,15 @@ Factory AI is a comprehensive AI coding platform that features autonomous AI age
 
 ### Installation
 
+> **📚 Official Documentation:** [Factory AI CLI Quickstart](https://docs.factory.ai/cli/getting-started/quickstart)
+
 #### **CLI Installation**
 
 ```bash
 curl -fsSL https://app.factory.ai/cli | sh
 ```
+
+> **💡 Tip:** See the [official quickstart guide](https://docs.factory.ai/cli/getting-started/quickstart) for detailed setup instructions
 
 #### **VS Code Extension**
 
@@ -382,6 +387,8 @@ curl http://localhost:11434
 
 ### Factory AI
 - [Factory AI Website](https://factory.ai/)
+- [Factory AI CLI Documentation](https://docs.factory.ai/cli/getting-started/quickstart)
+- [Droid Code Review (GitHub)](https://github.com/Factory-AI/droid-code-review)
 - [Factory IDE](https://factory.ai/product/ide)
 - [Setup Guide](https://ai4students.xyz/blog/factory-ai-droid-setup-guide.html)
 - [Factory AI Guide](https://www.siddharthbharath.com/factory-ai-guide/)

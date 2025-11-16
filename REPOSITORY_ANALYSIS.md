@@ -55,7 +55,7 @@ Complete analysis of the ai-coding-agents-guide repository structure and content
 - ✅ `/vscode-extensions/configuration/README.md` - **Updated with MCP Project Workflows**
 
 ### Factory AI & Void (100% Complete)
-- ✅ `/devoid-factory-ai/README.md` - Complete guide for both tools
+- ✅ `/droid-factory-ai/README.md` - Complete guide for both tools
 
 ### Shared Resources (100% Complete - CORE)
 - ✅ `/shared/mcp-servers/README.md` - MCP server documentation
@@ -102,7 +102,7 @@ These directories exist but are currently empty. **They are NOT required for com
 1. **`/chatgpt-codex/integration-tips/`** - Optional integration tips
 2. **`/claude-desktop/keyboard-shortcuts/`** - Optional shortcuts reference
 3. **`/comparisons/migration-guides/`** - Optional migration guides
-4. **`/devoid-factory-ai/setup/`** - Optional detailed setup (main guide has setup)
+4. **`/droid-factory-ai/setup/`** - Optional detailed setup (main guide has setup)
 5. **`/roo-code/features/`** - Optional features deep-dive (main guide has features)
 
 ### Very Low Priority (Future Expansion)
