@@ -34,33 +34,48 @@ This guide helps you configure the optimal MCP server setup based on your **proj
 
 ### 1. **Spec Kit** (Constitutional Development)
 
-**Purpose:** Greenfield & replatforming projects following constitutional principles
+**Official Repository:** https://github.com/github/spec-kit
+**Type:** CLI Tool (not traditional MCP server)
+**License:** MIT
+
+**Purpose:** Specification-Driven Development (SDD) where detailed specifications become executable blueprints
 
 **Key Features:**
 - PRD parsing and validation
 - Constitutional development methodology
 - 0→1 project scaffolding
-- Multi-phase planning
+- 8 slash commands for complete workflow
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-spec-kit
+# Requires Python 3.11+ and uv package manager
+# Install uv: https://docs.astral.sh/uv/
+
+# Persistent installation (recommended)
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+
+# Verify installation
+specify --version
 ```
 
-**Configuration:**
-```json
-{
-  "mcpServers": {
-    "spec-kit": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-spec-kit"],
-      "env": {
-        "SPEC_KIT_MODE": "constitutional"
-      }
-    }
-  }
-}
+**Initialize Project:**
+```bash
+# For Claude Code
+specify init my-project --ai claude --script sh
+
+# For Windows PowerShell
+specify init my-project --ai claude --script ps
 ```
+
+**Slash Commands (used in AI agent):**
+- `/speckit.constitution` - Establish governing principles
+- `/speckit.specify` - Create specifications
+- `/speckit.plan` - Generate implementation plans
+- `/speckit.tasks` - Break down into tasks
+- `/speckit.implement` - Execute implementation
+- `/speckit.analyze` - Validate consistency
+
+**Cost:** Free (no API keys required)
 
 **Best For:** Greenfield, Replatforming, Migration, Rewrite projects
 
@@ -68,33 +83,45 @@ npm install -g @modelcontextprotocol/server-spec-kit
 
 ### 2. **OpenSpec** (Change Tracking & Analysis)
 
-**Purpose:** Brownfield projects requiring change tracking and codebase analysis
+**Official Repository:** https://github.com/Fission-AI/OpenSpec
+**Package:** @fission-ai/openspec
+**License:** MIT
+
+**Purpose:** AI-native spec-driven development with change proposal system
 
 **Key Features:**
-- Change proposals and tracking
-- Codebase analysis and understanding
-- Integration point mapping
-- Delta detection
+- Change proposals with /proposal, /apply, /archive commands
+- Spec vs. changes separation (truth vs. proposals)
+- Codebase analysis and validation
+- Integration with 20+ AI tools
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-openspec
+# Requires Node.js 20.19.0+
+npm install -g @fission-ai/openspec@latest
+
+# Verify installation
+openspec --version
 ```
 
-**Configuration:**
-```json
-{
-  "mcpServers": {
-    "openspec": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-openspec", "/path/to/project"],
-      "env": {
-        "OPENSPEC_TRACK_CHANGES": "true"
-      }
-    }
-  }
-}
+**Initialize Project:**
+```bash
+cd /path/to/project
+openspec init --tools claude,cursor,cline  # Or --tools all
 ```
+
+**Slash Commands:**
+- `/proposal` - Create change proposal
+- `/apply` - Implement approved proposal
+- `/archive` - Finalize completed changes
+
+**CLI Commands:**
+- `openspec list` - Show active changes
+- `openspec view` - Interactive dashboard
+- `openspec validate` - Validate changes/specs
+- `openspec archive` - Archive completed work
+
+**Cost:** Free (no API keys required)
 
 **Best For:** Brownfield, Enhancement, Integration, Extension projects
 
@@ -102,143 +129,242 @@ npm install -g @modelcontextprotocol/server-openspec
 
 ### 3. **Task Master** (Orchestration & Memory)
 
-**Purpose:** Complex projects requiring task orchestration and memory
+**Official Repository:** https://github.com/eyaltoledano/claude-task-master
+**Package:** task-master-ai
+**License:** MIT WITH Commons-Clause
+**Stars:** 23.7k
+
+**Purpose:** AI-powered task management with persistent memory across sessions
 
 **Key Features:**
-- Epic sharding for large tasks
-- Task memory and context
-- Multi-phase orchestration
-- Progress tracking
+- 39 tools for complete task lifecycle
+- Epic sharding and PRD parsing
+- Task memory with tag-based contexts
+- Research mode with AI-powered analysis
+- Multi-model support (Claude, GPT, Gemini, Perplexity, etc.)
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-taskmaster
+# Requires Node.js 18+
+npm install -g task-master-ai
+
+# Configure AI providers
+task-master models --setup  # Interactive configuration
 ```
 
-**Configuration:**
+**MCP Configuration:**
 ```json
 {
   "mcpServers": {
-    "taskmaster": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-taskmaster"],
+    "task-master-ai": {
+      "command": "node",
+      "args": ["./dist/mcp-server.js"],
       "env": {
-        "TASKMASTER_MEMORY_ENABLED": "true",
-        "TASKMASTER_EPIC_SHARDING": "auto"
-      }
+        "DATA_DIR": "/absolute/path/to/data",
+        "ANTHROPIC_API_KEY": "your-key",
+        "OPENAI_API_KEY": "your-key",
+        "PERPLEXITY_API_KEY": "your-key",
+        "TASK_MASTER_TOOLS": "standard"
+      },
+      "timeout": 300
     }
   }
 }
 ```
+
+**Key Tools:**
+- `add-task`, `update-task`, `remove-task`, `set-task-status`
+- `add-subtask`, `split-tasks`, `expand-task`
+- `parse-prd`, `analyze`, `research`, `complexity-report`
+- `add-tag`, `use-tag`, `copy-tag` (git branch alignment)
+
+**Cost:** $0-200/month (depending on AI provider usage)
 
 **Best For:** Enhancement, Legacy Modernization, Rewrite, Integration projects
 
 ---
 
-### 4. **Shrimp** (Code Analysis & Review)
+### 4. **Shrimp** (Task Decomposition & Research)
 
-**Purpose:** Deep codebase analysis and intelligent code review
+**Official Repository:** https://github.com/cjo4m06/mcp-shrimp-task-manager
+**Package:** @cjo4m06/mcp-shrimp-task-manager
+**License:** MIT
+**Version:** 1.0.21
+
+**Purpose:** Advanced task decomposition with persistent memory and research-driven development
 
 **Key Features:**
-- Legacy codebase analysis
-- Code review and critique
-- Refactoring recommendations
-- Cross-platform comparison
+- 15 tools for task lifecycle management
+- Chain-of-thought processing and reflection
+- Research mode for systematic exploration
+- Persistent memory across sessions
+- React-based Task Viewer dashboard
+- Multi-language template support (10 languages)
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-shrimp
+# Requires Node.js 18+
+git clone https://github.com/cjo4m06/mcp-shrimp-task-manager.git
+cd mcp-shrimp-task-manager
+npm install
+npm run build
 ```
 
-**Configuration:**
+**MCP Configuration:**
 ```json
 {
   "mcpServers": {
-    "shrimp": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-shrimp", "/path/to/project"],
+    "shrimp-task-manager": {
+      "command": "node",
+      "args": ["/absolute/path/to/dist/index.js"],
       "env": {
-        "SHRIMP_ANALYSIS_DEPTH": "deep"
+        "DATA_DIR": "/absolute/path/to/data",
+        "TEMPLATES_USE": "en",
+        "ENABLE_GUI": "false",
+        "WEB_PORT": "3000"
       }
     }
   }
 }
 ```
 
-**Best For:** Brownfield, Migration, Maintenance, Refactoring, all analysis-heavy projects
+**Key Tools:**
+- `plan_task`, `analyze_task`, `reflect_task`, `split_tasks`
+- `execute_task`, `verify_task`, `complete_task`
+- `research_mode` - Systematic investigation (5+ char topics)
+- `init_project_rules` - Establish standards
+- `process_thought` - Chain-of-thought reasoning
+
+**Cost:** Free (optional OpenAI for agent assignment)
+
+**Best For:** Brownfield, Migration, Maintenance, Refactoring, Research-heavy projects
 
 ---
 
 ### 5. **Zen** (Multi-Model Validation)
 
-**Purpose:** Multi-model consensus, debugging, and validation
+**Official Repository:** https://github.com/BeehiveInnovations/zen-mcp-server
+**License:** MIT
+**Version:** 9.1.3
+
+**Purpose:** Multi-model orchestration platform coordinating work across multiple AI providers
 
 **Key Features:**
-- Multi-model validation (Claude + GPT + Gemini)
-- O3 routing for debugging
-- Reflection and critique
-- Consensus building
+- 18 tools for collaboration, code quality, development
+- Multi-model validation (Gemini, OpenAI, X.AI, Azure, DIAL, Ollama)
+- `clink` - CLI-to-CLI bridge for spawning subagents
+- `chat`, `thinkdeep`, `planner`, `consensus` tools
+- `codereview`, `debug`, `precommit` quality tools
+- Security auditing with OWASP Top 10 (`secaudit`)
+- Test generation (`testgen`), refactoring (`refactor`), documentation (`docgen`)
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-zen
+# Requires Python 3.10+ (3.12 recommended)
+# Option 1: uvx (quickest)
+# Add to ~/.claude/settings.json (see configuration below)
+
+# Option 2: Clone repository
+git clone https://github.com/BeehiveInnovations/zen-mcp-server.git
+cd zen-mcp-server
+./run-server.sh  # Linux/macOS
+.\run-server.ps1  # Windows PowerShell
 ```
 
-**Configuration:**
+**MCP Configuration:**
 ```json
 {
   "mcpServers": {
     "zen": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-zen"],
+      "command": "bash",
+      "args": ["-c", "uvx --from git+https://github.com/BeehiveInnovations/zen-mcp-server.git zen-mcp-server"],
       "env": {
-        "ZEN_MODELS": "claude-3-5-sonnet,gpt-4,gemini-2.5-pro",
-        "ZEN_O3_ROUTING": "true",
-        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
-        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
-        "GOOGLE_API_KEY": "${GOOGLE_API_KEY}"
+        "GEMINI_API_KEY": "your-key",
+        "OPENAI_API_KEY": "your-key",
+        "XAI_API_KEY": "your-key",
+        "DEFAULT_MODEL": "auto",
+        "DISABLED_TOOLS": "analyze,refactor,testgen,secaudit,docgen,tracer"
       }
     }
   }
 }
 ```
 
-**Best For:** All project types - universal validation layer
+**Example Prompts:**
+- "Use zen to analyze code for security with gemini pro"
+- "Perform codereview using gemini pro and o3"
+- "Use zen precommit to validate changes before committing"
+- "Get consensus from multiple models on architecture"
+
+**Cost:** $50-300/month (depending on AI providers and usage)
+
+**Best For:** All project types - universal validation, quality, and orchestration layer
 
 ---
 
-### 6. **BMAD** (Epic Complexity Management)
+### 6. **BMAD-METHOD** (Comprehensive AI-Human Collaboration Framework)
 
-**Purpose:** Very large, complex projects requiring advanced orchestration
+**Official Repository:** https://github.com/bmad-code-org/BMAD-METHOD
+**License:** MIT
+**Version:** v6.0.0-alpha.10
+
+**Purpose:** Open-source framework amplifying human-AI collaboration through specialized agents and guided workflows
 
 **Key Features:**
-- Break-Make-Analyze-Decide workflow
-- Epic-level task decomposition
-- Multi-phase project orchestration
-- Advanced dependency management
+- **19+ specialized AI agents** across 4 modules (Core, BMM, BMB, CIS, BMGD)
+- **50+ guided workflows** for software, game dev, and creative innovation
+- **Multi-phase methodology:** Analysis → Planning → Solutioning → Implementation
+- **Scale-adaptive tracks:** Quick Flow (1-4 hrs), BMad Method (1-3 days), Enterprise (3-7 days)
+- **Party Mode:** Multi-agent collaboration in single conversation
+- **Agent customization** and personalization
+- **16 IDE integrations** (Claude Code, Cursor, VS Code, etc.)
+
+**Key Agents:**
+- **Software Team (8):** PM, Analyst, Architect, Scrum Master, Developer, Test Architect, UX Designer, Technical Writer
+- **Game Team (4):** Game Designer, Game Developer, Game Architect, Frame Expert
+- **Creative Suite (5):** Carson (Brainstorming), Maya (Design Thinking), Dr. Quinn (Problem Solving), Victor (Innovation), Sophia (Storytelling)
+- **Builder (1):** Custom agent/workflow creator
 
 **Installation:**
 ```bash
-npm install -g @modelcontextprotocol/server-bmad
+# Requires Node.js 20+
+# Current version (v6 Alpha)
+npx bmad-method@alpha install
+
+# Interactive setup prompts for:
+# - Module selection
+# - IDE integration
+# - Core settings
+# - Project configuration
 ```
 
-**Configuration:**
-```json
-{
-  "mcpServers": {
-    "bmad": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-bmad"],
-      "env": {
-        "BMAD_EPIC_MODE": "true",
-        "BMAD_PHASES": "break,make,analyze,decide"
-      }
-    }
-  }
-}
+**IDE Integration:**
+
+**Claude Code:**
+```
+/bmad-{agent-name}
+/bmad:bmm:agents:dev
+/bmad:core:workflows:party-mode
+*workflow-init
+*document-project
 ```
 
-**Best For:** Legacy Modernization, Rewrite/Rebuild projects only
+**Cursor:**
+```
+@{bmad_folder}/bmm/agents/dev
+@{bmad_folder}/index  # Load all agents
+```
+
+**Key Workflows:**
+- Phase 0: `document-project` (brownfield codebase analysis)
+- Phase 1: `brainstorm-project`, `research`, `product-brief`, `game-brief`
+- Phase 2: `tech-spec`, `prd`, `gdd`, `architecture`
+- Phase 3: `create-epics-and-stories`, `implementation-readiness`
+- Phase 4: `sprint-planning`, `epic-tech-context`, `develop-story`, `code-review`
+
+**Cost:** $100-500/month (depending on AI providers and project complexity)
+
+**Best For:** Enterprise projects, Game development, Creative workflows, Multi-phase lifecycles, Teams needing structured methodology
 
 ---
 
