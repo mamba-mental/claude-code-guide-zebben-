@@ -97,6 +97,101 @@ opencode --version
 
 ---
 
+## File & Folder Structure
+
+OpenCode uses a comprehensive configuration system with support for agents, sessions, and MCP integration:
+
+```
+~/.opencode/                            # Global configuration
+├── config.json                         # Main config file
+├── auth/                               # Authentication
+│   └── tokens.json
+├── sessions/                           # Saved sessions
+│   ├── project-setup-2025-11-16.json
+│   ├── bug-fix-api-2025-11-15.json
+│   └── refactor-auth-2025-11-14.json
+├── mcp/                                # MCP configurations
+│   └── servers.json
+└── cache/                              # Response cache
+    └── model-responses/
+
+.opencode/                              # Project-specific config
+├── config.json                         # Project settings
+├── agents/                             # Custom agents (10-20 typical)
+│   ├── senior-dev.md
+│   ├── code-reviewer.md
+│   ├── test-engineer.md
+│   ├── doc-writer.md
+│   └── architect.md
+├── commands/                           # Custom commands
+│   ├── deploy.sh
+│   ├── test-all.sh
+│   └── lint-fix.sh
+├── tools/                              # Custom tools
+│   ├── custom-linter.json
+│   └── deploy-helper.json
+├── sessions/                           # Project sessions
+│   └── current-session.json
+└── mcp.json                            # MCP server config
+```
+
+### Key Files
+
+**~/.opencode/config.json** - Global configuration
+```json
+{
+  "provider": "anthropic",
+  "model": "claude-3-5-sonnet-20241022",
+  "editor": "vim",
+  "theme": "dark",
+  "mcp": {
+    "enabled": true,
+    "config_path": "~/.opencode/mcp/servers.json"
+  },
+  "tools": {
+    "bash": true,
+    "search": true,
+    "edit": true
+  }
+}
+```
+
+**.opencode/config.json** - Project configuration
+```json
+{
+  "project": {
+    "name": "my-app",
+    "language": "typescript",
+    "framework": "next.js"
+  },
+  "agents": {
+    "default": "senior-dev",
+    "enabled": ["code-reviewer", "test-engineer"]
+  }
+}
+```
+
+**.opencode/mcp.json** - MCP servers
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./src", "./tests"]
+    }
+  }
+}
+```
+
+**Configuration Paths:**
+- **Global**: `~/.opencode/`
+- **Project**: `.opencode/`
+- **Agents**: `.opencode/agents/*.md`
+- **Sessions**: `~/.opencode/sessions/` and `.opencode/sessions/`
+
+**To Create:** `opencode init` (creates .opencode/ directory)
+
+
 ## Features
 
 ### 1. **Interactive Terminal UI**

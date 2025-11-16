@@ -259,7 +259,111 @@ Server: http://localhost:11434
 Model: deepseek-coder:33b
 ```
 
-### Features
+### File & Folder Structure
+
+Factory AI Droids use cloud-based configuration with optional local Bridge setup:
+
+```
+~/Factory/                              # Factory Bridge config (local repos)
+├── config.json                         # Bridge settings
+├── repos/                              # Linked repositories
+│   ├── my-app/                         # Linked local repo
+│   └── another-project/
+└── logs/                               # Bridge activity logs
+    └── bridge-2025-11-16.log
+
+.factory/                               # Project-specific config (optional)
+├── droid-settings.json                 # Droid preferences
+├── workflows/                          # Custom workflows
+│   ├── deploy.yaml
+│   ├── test-suite.yaml
+│   └── code-review.yaml
+└── templates/                          # Code templates
+    ├── component.tsx
+    └── api-route.ts
+```
+
+### Key Files
+
+**~/Factory/config.json** - Factory Bridge configuration
+```json
+{
+  "bridge": {
+    "enabled": true,
+    "port": 3000
+  },
+  "linkedRepos": [
+    {
+      "name": "my-app",
+      "path": "/Users/username/projects/my-app",
+      "access": "read-write"
+    }
+  ],
+  "droids": {
+    "defaultModel": "gpt-4-turbo",
+    "features": ["code-review", "testing", "deployment"]
+  }
+}
+```
+
+**.factory/droid-settings.json** - Project Droid settings
+```json
+{
+  "project": {
+    "name": "my-app",
+    "language": "typescript",
+    "framework": "next.js"
+  },
+  "droids": {
+    "code_review": {
+      "enabled": true,
+      "auto_approve": false,
+      "focus_areas": ["security", "performance"]
+    },
+    "testing": {
+      "enabled": true,
+      "coverage_threshold": 80
+    }
+  },
+  "workflows": {
+    "deploy": "workflows/deploy.yaml"
+  }
+}
+```
+
+**.factory/workflows/deploy.yaml** - Deployment workflow
+```yaml
+name: Deploy to Production
+trigger: manual
+steps:
+  - name: Run Tests
+    command: npm test
+    required: true
+  
+  - name: Build
+    command: npm run build
+    required: true
+  
+  - name: Deploy
+    command: vercel deploy --prod
+    confirmation: true
+```
+
+**Configuration Paths:**
+- **Bridge Config**: `~/Factory/config.json`
+- **Project Config**: `.factory/droid-settings.json`
+- **Workflows**: `.factory/workflows/*.yaml`
+- **Web Settings**: Configure at factory.ai (cloud-based)
+
+**To Configure:**
+- **Bridge**: Install Factory Bridge app, configure via UI
+- **Web**: Visit factory.ai → Settings
+- **Local**: Create `.factory/` directory in project
+
+**Note:** Most configuration is cloud-based through the Factory AI web interface. Local config is optional for advanced workflows.
+
+
+## Features
 
 #### **Tab Autocomplete**
 

@@ -37,6 +37,115 @@ Visual Studio Code has become the platform of choice for AI-powered coding assis
 
 ---
 
+## File & Folder Structure
+
+VS Code with AI extensions uses workspace-based configuration supporting multiple extensions:
+
+```
+.vscode/                                # VS Code workspace config
+├── settings.json                       # Extension settings
+├── extensions.json                     # Recommended extensions
+├── launch.json                         # Debug configurations
+└── tasks.json                          # Custom tasks
+
+.copilot/                               # GitHub Copilot config (optional)
+├── instructions.md                     # Custom instructions
+└── ignore                              # Files to exclude
+
+.cursor/                                # Cursor-specific (if using Cursor)
+├── prompts/                            # Custom prompts
+└── settings.json                       # Cursor settings
+
+.continue/                              # Continue.dev config
+├── config.json                         # Main config
+├── prompts/                            # Custom prompts
+│   ├── explain.md
+│   ├── edit.md
+│   └── generate.md
+└── context/                            # Context providers
+    └── custom-provider.js
+```
+
+### Key Files
+
+**.vscode/settings.json** - Unified AI extension settings
+```json
+{
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": false
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+
+  // Continue.dev
+  "continue.telemetryEnabled": false,
+  "continue.enableTabAutocomplete": true,
+
+  // Claude Code Extension
+  "claude.apiKey": "sk-ant-api03-...",
+  "claude.model": "claude-3-5-sonnet-20241022",
+
+  // General AI settings
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  }
+}
+```
+
+**.copilot/instructions.md** - GitHub Copilot instructions
+```markdown
+# Copilot Instructions
+
+- Use TypeScript with strict mode
+- Prefer functional components with hooks
+- Include error handling in all async functions
+- Add JSDoc comments to exported functions
+- Follow existing code style and patterns
+```
+
+**.continue/config.json** - Continue.dev configuration
+```json
+{
+  "models": [
+    {
+      "title": "Claude 3.5 Sonnet",
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022",
+      "apiKey": "sk-ant-api03-..."
+    }
+  ],
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "Generate comprehensive tests for this code",
+      "description": "Create test suite"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {
+        "includeTests": true
+      }
+    }
+  ]
+}
+```
+
+**Configuration Paths:**
+- **VS Code Settings**: `.vscode/settings.json`
+- **Copilot**: `.copilot/instructions.md`
+- **Continue**: `.continue/config.json`
+- **Extension Recommendations**: `.vscode/extensions.json`
+
+**To Configure:** VS Code Settings → Extensions → [Extension Name]
+
+---
+
 ## Extensions Covered
 
 ### 1. **Claude Code Extension** (by Anthropic)

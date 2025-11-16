@@ -75,6 +75,55 @@ Claude Desktop supports standard enterprise deployment:
 
 ---
 
+## File & Folder Structure
+
+Claude Desktop uses a minimal configuration structure focused on MCP server management:
+
+```
+~/Library/Application Support/Claude/  (macOS)
+%APPDATA%\Claude\                      (Windows)
+├── claude_desktop_config.json         # Main MCP configuration
+├── logs/                               # Application logs
+│   ├── mcp-server-filesystem.log
+│   ├── mcp-server-github.log
+│   └── claude-desktop.log
+└── extensions/                         # Desktop Extensions (2025)
+    ├── installed/                      # One-click installed servers
+    │   ├── brave-search/
+    │   ├── github/
+    │   └── filesystem/
+    └── cache/                          # Extension metadata
+```
+
+### Key Files
+
+**claude_desktop_config.json** - Primary configuration file
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/dir"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token"
+      }
+    }
+  }
+}
+```
+
+**Configuration Paths:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+
+**To Edit:** Settings → Developer → Edit Config
+
+---
+
 ## MCP Integration
 
 **Model Context Protocol (MCP)** is the key differentiator for Claude Desktop, enabling seamless integration between Claude and external tools.

@@ -167,6 +167,75 @@ Connected to Gemini 2.5 Pro (1M context)
 
 ---
 
+## File & Folder Structure
+
+Gemini CLI uses a streamlined configuration structure with TOML-based settings:
+
+```
+~/.gemini/                              # Global configuration
+├── config.toml                         # Main config file
+├── auth/                               # Google OAuth credentials
+│   └── credentials.json
+├── history/                            # Conversation sessions
+│   ├── session-2025-11-16.jsonl
+│   └── session-2025-11-15.jsonl
+├── mcp/                                # MCP server configs
+│   └── servers.toml
+└── cache/                              # Response cache
+    └── embeddings/
+
+.gemini/                                # Project-specific config
+├── config.toml                         # Project settings
+├── agents/                             # Custom agents (optional)
+│   ├── code-reviewer.md
+│   └── test-generator.md
+└── commands/                           # Custom commands (optional)
+    ├── deploy.toml
+    └── test.toml
+```
+
+### Key Files
+
+**~/.gemini/config.toml** - Global configuration
+```toml
+[auth]
+method = "google_account"  # Free tier
+
+[model]
+name = "gemini-2.5-pro"
+temperature = 0.7
+max_tokens = 8192
+
+[tools]
+web_search = true
+code_execution = false
+mcp_enabled = true
+
+[[mcp_servers]]
+name = "filesystem"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/dir"]
+```
+
+**.gemini/config.toml** - Project configuration
+```toml
+[project]
+name = "my-project"
+context_files = ["README.md", "ARCHITECTURE.md"]
+
+[model]
+temperature = 0.3  # Override for this project
+```
+
+**Configuration Paths:**
+- **Global**: `~/.gemini/config.toml`
+- **Project**: `.gemini/config.toml`
+- **MCP Servers**: `~/.gemini/mcp/servers.toml`
+- **Auth**: `~/.gemini/auth/credentials.json`
+
+**To Edit:** `gemini config edit`
+
+
 ## Features
 
 ### 1. **Massive Context Window**

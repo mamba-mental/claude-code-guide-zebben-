@@ -148,6 +148,108 @@ Models: Any locally-run model
 
 ---
 
+## File & Folder Structure
+
+Roo-Code uses a rules-based configuration system with project memory:
+
+```
+.roo/                                   # Roo-Code configuration
+├── rules/                              # Project rules (10-15 typical)
+│   ├── code-standards.md
+│   ├── testing-requirements.md
+│   ├── architecture-patterns.md
+│   ├── git-workflow.md
+│   └── deployment-checklist.md
+├── memory/                             # Project memory/context
+│   ├── architecture.md
+│   ├── decisions.md
+│   └── tech-stack.md
+├── templates/                          # Code templates
+│   ├── component-template.tsx
+│   ├── api-route-template.ts
+│   └── test-template.spec.ts
+├── workflows/                          # Automated workflows
+│   ├── pre-commit.md
+│   ├── code-review.md
+│   └── deploy.md
+└── config.json                         # Roo configuration
+```
+
+### Key Files
+
+**.roo/config.json** - Main configuration
+```json
+{
+  "model": "claude-3-5-sonnet-20241022",
+  "rules": {
+    "enabled": [
+      "code-standards",
+      "testing-requirements",
+      "architecture-patterns"
+    ]
+  },
+  "memory": {
+    "context_files": [
+      "memory/architecture.md",
+      "memory/decisions.md"
+    ]
+  },
+  "workflows": {
+    "pre_commit": "workflows/pre-commit.md",
+    "code_review": "workflows/code-review.md"
+  }
+}
+```
+
+**.roo/rules/code-standards.md** - Project rules
+```markdown
+# Code Standards
+
+## TypeScript
+- Strict mode enabled
+- No `any` types without justification
+- Explicit return types on functions
+- Interface over type alias for objects
+
+## React
+- Functional components only
+- Custom hooks for shared logic
+- Props interface for all components
+- Memo for expensive re-renders
+
+## Testing
+- Jest for unit tests
+- React Testing Library for components
+- Minimum 80% coverage
+- Test behavior, not implementation
+```
+
+**.roo/memory/architecture.md** - Architecture documentation
+```markdown
+# Project Architecture
+
+## Structure
+- `/src/app` - Next.js App Router
+- `/src/components` - Reusable React components
+- `/src/lib` - Business logic and utilities
+- `/src/hooks` - Custom React hooks
+
+## Key Decisions
+- Next.js 14 with App Router
+- Tailwind CSS for styling
+- PostgreSQL with Prisma ORM
+- Vercel for deployment
+```
+
+**Configuration Paths:**
+- **Project Root**: `.roo/`
+- **Rules**: `.roo/rules/*.md`
+- **Memory**: `.roo/memory/*.md`
+- **Config**: `.roo/config.json`
+
+**To Create:** Create `.roo/` directory and add rules/memory files
+
+
 ## Features
 
 ### 1. **Fast Edits**

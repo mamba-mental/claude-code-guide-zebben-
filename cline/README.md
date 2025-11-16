@@ -129,6 +129,84 @@ Supported providers:
 
 ---
 
+## File & Folder Structure
+
+Cline (VS Code extension) uses workspace-based configuration with support for custom instructions and MCP:
+
+```
+.vscode/                                # VS Code workspace config
+├── settings.json                       # Cline settings
+└── extensions.json                     # Extension recommendations
+
+.cline/                                 # Cline-specific config
+├── instructions/                       # Custom instructions (5-10 typical)
+│   ├── code-review-checklist.md
+│   ├── testing-guidelines.md
+│   ├── deployment-steps.md
+│   └── architecture-principles.md
+├── templates/                          # Code templates
+│   ├── react-component.tsx
+│   ├── api-route.ts
+│   └── test-suite.spec.ts
+├── history/                            # Task history
+│   ├── 2025-11-16-auth-implementation.json
+│   └── 2025-11-15-bug-fixes.json
+└── mcp.json                            # MCP server config (optional)
+```
+
+### Key Files
+
+**.vscode/settings.json** - Cline configuration
+```json
+{
+  "cline.anthropicApiKey": "sk-ant-api03-...",
+  "cline.model": "claude-3-5-sonnet-20241022",
+  "cline.maxTokens": 8192,
+  "cline.customInstructions": ".cline/instructions/code-review-checklist.md",
+  "cline.mcpEnabled": true,
+  "cline.mcpConfig": ".cline/mcp.json"
+}
+```
+
+**.cline/instructions/code-review-checklist.md** - Custom instructions
+```markdown
+# Code Review Guidelines
+
+## Always Check
+- [ ] Type safety (TypeScript strict mode)
+- [ ] Error handling (try/catch, null checks)
+- [ ] Test coverage (>80%)
+- [ ] Documentation (JSDoc comments)
+- [ ] Performance (no obvious bottlenecks)
+
+## Code Standards
+- Use functional components with hooks
+- Prefer composition over inheritance
+- Keep functions under 50 lines
+- Extract reusable logic to custom hooks
+```
+
+**.cline/mcp.json** - MCP configuration
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./src"]
+    }
+  }
+}
+```
+
+**Configuration Paths:**
+- **VS Code Settings**: `.vscode/settings.json`
+- **Custom Instructions**: `.cline/instructions/*.md`
+- **Templates**: `.cline/templates/`
+- **MCP Config**: `.cline/mcp.json`
+
+**To Configure:** VS Code Settings → Extensions → Cline
+
+
 ## Features
 
 ### 1. **File Creation & Editing**

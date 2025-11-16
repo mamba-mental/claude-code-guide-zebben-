@@ -223,6 +223,86 @@ codex config reset
 
 ---
 
+## File & Folder Structure
+
+ChatGPT Codex CLI uses a project-based configuration system with support for MCP servers and custom tools:
+
+```
+~/.codex/                               # Global configuration
+├── config.toml                         # Main config file
+├── auth/                               # Authentication tokens
+│   └── session.json
+├── history/                            # Conversation history
+│   ├── 2025-11-16-project-setup.json
+│   └── 2025-11-15-bug-fix.json
+└── mcp/                                # MCP server configurations
+    └── servers.json
+
+.codex/                                 # Project-specific config
+├── config.toml                         # Project settings
+├── agents/                             # Custom agents (10-15 typical)
+│   ├── code-reviewer.md
+│   ├── test-writer.md
+│   ├── doc-generator.md
+│   └── refactoring-assistant.md
+├── commands/                           # Slash commands (5-10 typical)
+│   ├── deploy.md
+│   ├── test-all.md
+│   └── code-review.md
+├── tools/                              # Custom tools
+│   └── tool-registry.json
+└── mcp.json                            # Project MCP servers
+```
+
+### Key Files
+
+**~/.codex/config.toml** - Global configuration
+```toml
+[auth]
+method = "chatgpt"  # or "api_key"
+
+[model]
+default = "gpt-5-codex"
+reasoning_mode = "extended"
+
+[tools]
+web_search = true
+code_execution = true
+mcp_enabled = true
+```
+
+**.codex/config.toml** - Project configuration
+```toml
+[project]
+name = "my-app"
+language = "typescript"
+
+[mcp]
+enabled = true
+config_file = "mcp.json"
+```
+
+**.codex/mcp.json** - MCP server configuration
+```json
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"]
+    }
+  }
+}
+```
+
+**Configuration Paths:**
+- **Global**: `~/.codex/` (all platforms)
+- **Project**: `.codex/` (in project root)
+- **Agents**: `.codex/agents/*.md`
+- **Commands**: `.codex/commands/*.md`
+
+**To Create:** `codex init` (creates .codex/ directory)
+
+
 ## Features
 
 ### Multi-modal Inputs
